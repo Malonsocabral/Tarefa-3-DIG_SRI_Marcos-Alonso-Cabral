@@ -143,7 +143,7 @@ E basicamente a resposta que nos aparece na parte da autoridade é a seguinte : 
 >Cabe destacar que isto pode verse de manera visual no documento de google do comenzo.
 
 Logo, procedemos a preguntarlle ao servidor primario utilizando o comando `dig @ns1.hover.com. SOA moodle.danielcastelao.org`.  
-Unha vez feita a consulta o que nos devolve na authority section do dominio principal do danielcastelao.org é o seguinte : danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
+Unha vez feita a consulta o que nos devolve na authority section do dominio principal do danielcastelao.org é o seguinte :   danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 
 >[!NOTE]
 >Isto podese ver de manera visual no documento de google do comenzo.
@@ -152,10 +152,10 @@ Unha vez feita a consulta o que nos devolve na authority section do dominio prin
 
 Para consultar a ip de *elpais* debemos facer o seu correspondiente comando dig, que neste caso quedaria tal que asi : `dig www.elpais.com`  
 Logo podemos observar que na answer section o servidor nos devuelve o seguinte :    
-www.elpais.com.		297	IN	CNAME	prisa-us-eu.map.fastly.net.
-prisa-us-eu.map.fastly.net. 60	IN	A	199.232.194.133
-prisa-us-eu.map.fastly.net. 60	IN	A	199.232.198.133
-É como podemos observar o TTL é de 297
+www.elpais.com.		297	IN	CNAME	prisa-us-eu.map.fastly.net.  
+prisa-us-eu.map.fastly.net. 60	IN	A	199.232.194.133  
+prisa-us-eu.map.fastly.net. 60	IN	A	199.232.198.133  
+É como podemos observar o TTL é de 297 
 
     
 ## 8.Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
@@ -167,8 +167,8 @@ Os comandos foron os seguintes : `dig www.google.com`, `dig www.tesla.com` e `ww
 >Isto podese ver de manera visual no documento de google do comenzo.
 
    
-Podemos observar que o TTL de google non aparece posiblemente porque o dominio de google sera para sempre. 
-Logo, no caso de tesla podemos ver que o TTL é de **21436** , o cal nos da a enterner que tamen é moi alto xa que no se esperan cambios nesta paxina.
+Podemos observar que o TTL de google non aparece posiblemente porque o dominio de google sera para sempre.   
+Logo, no caso de tesla podemos ver que o TTL é de **21436** , o cal nos da a enterner que tamen é moi alto xa que no se esperan cambios nesta paxina.  
 E por ultimo no caso de agar.io podemos ver que o TTL é de **300** xa que pode ser mais probable que esta paxina sufra cambios en comparacion coa de tesla e google
 
 
@@ -182,6 +182,7 @@ No caso de tesla.com, tras moita invertigacion, pode dicir que a paxina de tesla
 Para averiguar cantas maquinas estan detras de este dominio debemos facer o comando `dig www.google.es` para asi comprobar que so aparece unha maquina no momento que realicei esta peticion.  
 >[!NOTE]
 >Isto podese ver de manera visual no documento de google do comenzo.
+  
 E para responder as preguntas, si, si son sempre has mismas maquinas polo menos nas consultas que eu fixen ao servidor, e supoño que sera porque é una empresa estable que sabe que ese servicio vai funcionarlle.
 
 ## 11.Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
@@ -190,10 +191,13 @@ Neste caso a facer o comando dig a propia raiz debemos poñer o seguinte `dig A 
 Logo podemos ver que na parte da resposta (answer section) pon duas ips :  
 J.ROOTSERVERS.net.	3600	IN	A	15.197.204.56  
 J.ROOTSERVERS.net.	3600	IN	A	3.33.243.145  
-
+Logo para facerlo de modo recursivo debemos facer un `dig -x 15.197.204.56` e `dig -x 3.33.243.145`.
 
   
 ## 12.Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
+
+
+
 
 ## 13.Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
 
