@@ -196,12 +196,26 @@ Logo para facerlo de modo recursivo debemos facer un `dig -x 15.197.204.56` e `d
   
 ## 12.Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
 
-
+Para ver todas as respuestas do servidor, debemos poñer o comando de dig con un +trace, por exemplo nesta direccion quedaria tal que asi : `dig +trace www.timesonline.co.uk`  
+>[!NOTE]
+>Isto podese ver de manera visual no documento de google do comenzo.
+ 
 
 
 ## 13.Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
 
+Para descubrir estas maquinas debemos comezar polo comando : `dig MX danielcastelao.org`
+E como podemos observar na seccion de resposta, as maquinas que nos devolve esta consulta son as seguintes :  
+danielcastelao.org.	900	IN	MX	130 aspmx4.googlemail.com.  
+danielcastelao.org.	900	IN	MX	90 alt1.aspmx.l.google.com.  
+danielcastelao.org.	900	IN	MX	110 aspmx2.googlemail.com.  
+danielcastelao.org.	900	IN	MX	100 alt2.aspmx.l.google.com.  
+danielcastelao.org.	900	IN	MX	140 aspmx5.googlemail.com.  
+danielcastelao.org.	900	IN	MX	80 aspmx.l.google.com.  
+danielcastelao.org.	900	IN	MX	120 aspmx3.googlemail.com.  
+
 ## 14.Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
 
-Entrega as respostas nun arquivo .md gardado nun repositorio git
-
+Los registros AAAA en DNS corresponden a las *direcciones IPv6* asociadas con un dominio. Para obtener los registros AAAA de facebook utilizaremos o seguinte comando : ` dig AAAA www.facebook.com`
+>[!NOTE]
+>Isto podese ver de manera visual no documento de google do comenzo.
