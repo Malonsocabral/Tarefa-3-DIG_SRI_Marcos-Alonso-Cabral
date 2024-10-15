@@ -187,7 +187,8 @@ E para responder as preguntas, si, si son sempre has mismas maquinas polo menos 
 ## 11.Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
 
 Neste caso a facer o comando dig a propia raiz debemos poñer o seguinte `dig A J.ROOTSERVERS.net`
-Logo podemos ver que na parte da resposta (answer section) pon duas ips : J.ROOTSERVERS.net.	3600	IN	A	15.197.204.56
+Logo podemos ver que na parte da resposta (answer section) pon duas ips :  
+J.ROOTSERVERS.net.	3600	IN	A	15.197.204.56
 J.ROOTSERVERS.net.	3600	IN	A	3.33.243.145  
 
 
