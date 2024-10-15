@@ -99,12 +99,12 @@ A continuación realízanse consultas para **moodle.danielcastelao.org** e **www
 
 
 ### Nome e IP dos servidores DNS autoritativos de **www.danielcastelao.org**
-Na consulta DNS co comando `dig www.danielcastelao.org` para **www.danielcastelao.org**, os servidores DNS autoritativos pódense atopar na **AUTHORITY SECTION**. Os servidores identificados poden ser:
+Na consulta DNS co comando `dig ns www.danielcastelao.org` para **www.danielcastelao.org**, os servidores DNS autoritativos pódense atopar na **AUTHORITY SECTION**. Os servidores identificados poden ser:
 
 **ns1.hover.com** e **dnsmaster.hover.com**
 
 >[!NOTE]
->Cabe destacar que esto puede verse de manera visual en el documento de google del comienzo.
+>Cabe destacar que isto pode verse de manera visual no documento de google do comenzo.
 
 
 
@@ -113,17 +113,19 @@ Na consulta DNS co comando `dig www.danielcastelao.org` para **www.danielcastela
 
 Para realizar a inversa de esta ip debemos utilizar o comando `dig -x 130.206.164.68` xa que co parametro -x facemos a inversa.
 
-Logo podemos ver  os outras dous ips al azar que elexin. A primeira é 130.206.164.69 e a segunda 130.206.164.68. En ambos volvin a utilizar o comando `dig -x <ip>`
+Logo podemos ver  os outras dous ips al azar que elexin. A primeira é 130.206.164.69 e a segunda 130.206.164.70. En ambos volvin a utilizar o comando `dig -x <ip>`
 
 >[!NOTE]
->Cabe destacar que esto puede verse de manera visual en el documento de google del comienzo.
+>Cabe destacar que isto pode verse de manera visual no documento de google do comenzo.
 
 
 
 
 
 ## 5.A qué servidor DNS estás consultando? Cómo o podes cambiar sen tocar os ficheiros de configuración do sistema?
-Para saber este servidor DNS fai falta poñer o comando `cat /etc/resolv.conf`
+Para saber este servidor DNS fai falta poñer o comando `cat /etc/resolv.conf`.Por defecto este archivo ten configurado os servidores DNS que se usan para que o propio comando **dig** resolva os nomes de dominios.  
+Para lograr cambiar esto, soamente debemos usar o comando `dig @8.8.8.8 www.danielcastelao.org` para asi buscar dende o 8.8.8.8 (indicado mediante o *@*) que basicamente é google.
+
 
 
 
@@ -133,9 +135,34 @@ Para saber este servidor DNS fai falta poñer o comando `cat /etc/resolv.conf`
 
 ## 6.Obtén o rexistro SOA (Start of Authority) do dominio  moodle.danielcastelao.org preguntándolle ó servidor DNS de google e logo preoguntándollo directamente ó servidor primario do dominio danielcastelao.org. 
 
+Neste exercicio utilizaremos o comando `dig @8.8.8.8 SOA moodle.danielcastelao.org` e segun o explicado anteriormente, podemos saber que se busca directamente dende o DNS de google polo *@* ao comenzo do comando.  
+
+E basicamente a resposta que nos aparece na parte da autoridade é a seguinte : danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300  
+
+>[!NOTE]
+>Cabe destacar que isto pode verse de manera visual no documento de google do comenzo.
+
+Logo, procedemos a preguntarlle ao servidor primario utilizando o comando `dig @ns1.hover.com. SOA moodle.danielcastelao.org`.  
+Unha vez feita a consulta o que nos devolve na authority section do dominio principal do danielcastelao.org é o seguinte : danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
+
+>[!NOTE]
+>Isto podese ver de manera visual no documento de google do comenzo.
+
 ## 7.Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
+
+Para consultar a ip de *elpais* debemos facer o seu correspondiente comando dig, que neste caso quedaria tal que asi : `dig www.elpais.com`  
+Logo podemos observar que na answer section o servidor nos devuelve o seguinte :    
+www.elpais.com.		297	IN	CNAME	prisa-us-eu.map.fastly.net.
+prisa-us-eu.map.fastly.net. 60	IN	A	199.232.194.133
+prisa-us-eu.map.fastly.net. 60	IN	A	199.232.198.133
+É como podemos observar o TTL é de 297
+
     
 ## 8.Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
+
+
+
+
 
 ## 9.Determina o TTL máximo (original) dun nome de dominio.
     
