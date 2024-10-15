@@ -160,16 +160,38 @@ prisa-us-eu.map.fastly.net. 60	IN	A	199.232.198.133
     
 ## 8.Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
 
+Para comenzar elexin os nomes de dominio de google.com, tesla.com e agar.io  
+Os comandos foron os seguintes : `dig www.google.com`, `dig www.tesla.com` e `www.agar.io`.  
 
+>[!NOTE]
+>Isto podese ver de manera visual no documento de google do comenzo.
+
+   
+Podemos observar que o TTL de google non aparece posiblemente porque o dominio de google sera para sempre. 
+Logo, no caso de tesla podemos ver que o TTL é de **21436** , o cal nos da a enterner que tamen é moi alto xa que no se esperan cambios nesta paxina.
+E por ultimo no caso de agar.io podemos ver que o TTL é de **300** xa que pode ser mais probable que esta paxina sufra cambios en comparacion coa de tesla e google
 
 
 
 ## 9.Determina o TTL máximo (original) dun nome de dominio.
     
+No caso de tesla.com, tras moita invertigacion, pode dicir que a paxina de tesla no ten un TTL maximo como tal sinon que segue o standar (3600) aunque se facemos o comando dig neste momento (`dig www.tesla.com`) aparecenos como TTL de **21436**
+
 ## 10.Averigua cántas máquinas con distintas IPs están detrás do dominio web www.google.es, sempre son as mesmas e na mesma orde? por qué?
 
+Para averiguar cantas maquinas estan detras de este dominio debemos facer o comando `dig www.google.es` para asi comprobar que so aparece unha maquina no momento que realicei esta peticion.  
+>[!NOTE]
+>Isto podese ver de manera visual no documento de google do comenzo.
+E para responder as preguntas, si, si son sempre has mismas maquinas polo menos nas consultas que eu fixen ao servidor, e supoño que sera porque é una empresa estable que sabe que ese servicio vai funcionarlle.
+
 ## 11.Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
-    
+
+Neste caso a facer o comando dig a propia raiz debemos poñer o seguinte `dig A J.ROOTSERVERS.net`
+Logo podemos ver que na parte da resposta (answer section) pon duas ips : J.ROOTSERVERS.net.	3600	IN	A	15.197.204.56
+J.ROOTSERVERS.net.	3600	IN	A	3.33.243.145  
+
+
+  
 ## 12.Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
 
 ## 13.Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
